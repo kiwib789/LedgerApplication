@@ -7,24 +7,33 @@ public class Transaction {
 
     //fields aka variables - they hold the data for the class
 
-    private LocalTime time;
-   private  LocalDate date;
-   private  double amount;
-   private  String vendor;
-   private  String description;
+    LocalTime time;
+    LocalDate date;
+    double amount;
+    String vendor;
+    String description;
 
 
-   //constructors - allow us to create instances of our class
+    //constructors - allow us to create instances of our class
     //when we create an instance of the class then we've created an object
 
 
-    public Transaction(LocalTime time, LocalDate date, double amount, String vendor, String description) {
+//    public Transaction(LocalTime time, LocalDate date, double amount, String vendor, String description) {
+//        this.time = time;
+//        this.date = date;
+//        this.amount = amount;
+//        this.vendor = vendor;
+//        this.description = description;
+//    }
+
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.time = time;
         this.date = date;
         this.amount = amount;
         this.vendor = vendor;
         this.description = description;
     }
+
 
     public LocalTime getTime() {
         return time;
