@@ -14,6 +14,7 @@ public class MenuApp {
 
         while (isRunning) {
             System.out.println("""
+                
                     Welcome to the Transactions Home Screen!
                     
                     Please choose one of the following:
@@ -26,15 +27,18 @@ public class MenuApp {
                     
                     X. Exit
                     """);
-            String userInput = scanner.nextLine();
+            String userInput = scanner.nextLine().toUpperCase();
+
 
             switch (userInput) {
                 case "D":
+                    System.out.println("Please enter deposit. ");
                     // runs add deposit class
-                    return;
+                    addDeposit();
+
                 case "P":
                     // runs make payment class
-                    return;
+                   makePayment();
                 case "L":
                     // runs ledger class
                     return;
@@ -52,6 +56,7 @@ public class MenuApp {
 
 
         }
+
     }
 
     private static void writeToFile(Transaction transaction) {
@@ -80,6 +85,32 @@ public class MenuApp {
             e.printStackTrace();
         }
         return result;
+    }
+    public static void addDeposit(){
+        // get amount
+        System.out.println("How much you would like to deposit? ");
+        Scanner addScanner = new Scanner(System.in);
+
+        double amount = addScanner.nextDouble();
+        addScanner.nextLine();
+
+        System.out.println("Please enter vendor: ");
+        String vendor = addScanner.nextLine();
+
+        System.out.println("Please enter description");
+        String description = addScanner.nextLine();
+
+        System.out.println("Your deposit was:" + amount );
+     }
+    public static void makePayment(){
+        System.out.println("How much would you like to pay? ");
+        Scanner paymentScanner = new Scanner(System.in);
+
+        double amount = paymentScanner.nextDouble();
+
+        System.out.println("Thank you your payment of "+ amount + " was successful.");
+
+        // add vendor
     }
 
 }

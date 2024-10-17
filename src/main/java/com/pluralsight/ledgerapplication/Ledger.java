@@ -9,9 +9,17 @@ public class Ledger {
 
     public Ledger(){
         transactions = new ArrayList<>();
+        // create ledger method
+        // ask prompt
+        // create scanner
+        //set boolean and variable to true
+        // create while loop ( user homescreen as reference)
+        // sout
+        // switch case
+        // make methods for those cases
     }
 
-    //might need a method to read from the file and populate this arraylist with the trascations
+    //might need a method to read from the file and populate this arraylist with the transactions
 
     public void populateTransactionArray(){
         //read from csv file and create a Transaction object for each time in the file.
