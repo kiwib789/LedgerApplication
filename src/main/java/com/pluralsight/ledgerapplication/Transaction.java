@@ -17,15 +17,6 @@ public class Transaction {
     //constructors - allow us to create instances of our class
     //when we create an instance of the class then we've created an object
 
-
-//    public Transaction(LocalTime time, LocalDate date, double amount, String vendor, String description) {
-//        this.time = time;
-//        this.date = date;
-//        this.amount = amount;
-//        this.vendor = vendor;
-//        this.description = description;
-//    }
-
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.time = time;
         this.date = date;
