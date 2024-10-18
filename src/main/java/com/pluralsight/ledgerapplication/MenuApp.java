@@ -37,7 +37,7 @@ public class MenuApp {
                     """);
             String userInput = scanner.nextLine().toUpperCase();
 
-            // Works wit user input based on which answer they pick and takes them to the next screen
+            // Works with user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "D":
                     System.out.println("Please enter deposit. ");
@@ -123,7 +123,7 @@ public class MenuApp {
         return result;
     }
 
-
+    // questions for user to answer that adds a deposit with their input
     public static void addDeposit() {
         // get amount
         System.out.println("How much you would like to deposit? ");
@@ -146,7 +146,7 @@ public class MenuApp {
 
     }
 
-
+    // // questions for user to answer that makes a payment with their input
     public static void makePayment() {
         System.out.println("How much would you like to pay? ");
         Scanner paymentScanner = new Scanner(System.in);
@@ -162,12 +162,10 @@ public class MenuApp {
         System.out.println("Thank you your payment of " + amount + " was successful.");
         LocalDateTime now = LocalDateTime.now();
         Transaction t = new Transaction(now.toLocalDate(), now.toLocalTime(), description, vendor, -amount);
-        //payment negative numbers
         transactions.add(t);
-        // add vendor
     }
 
-
+    // Ledger display screen
     public static void displayLedgerMenu() {
         Scanner scanner = new Scanner(System.in);
 
@@ -188,7 +186,7 @@ public class MenuApp {
                     """);
             String userInput = scanner.nextLine().toUpperCase();
 
-
+            // Works wit user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "A":
                     System.out.println("View all entries ");
@@ -224,7 +222,7 @@ public class MenuApp {
 
     }
 
-//ledger
+    //ledger
     public static void showAllEntries() {
         System.out.println("All entries:");
         Ledger.allTransaction(transactions);
