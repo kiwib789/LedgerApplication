@@ -276,7 +276,7 @@ public class MenuApp {
 
     }
 
-
+    // reports screen
     public static void reportsDisplay() {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
