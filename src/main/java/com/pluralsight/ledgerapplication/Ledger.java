@@ -30,7 +30,7 @@ public class Ledger {
             System.out.println(p);
         }
     }
-// hey paul if you see this i fixed a good amount of my errors i was missing a curly brace, took me two hours to realize it -_-
+// hey paul if you see this i fixed a good amount of my errors i was missing a curly brace, took me two hours to realize it ~_~
 // i couldnt fix the error above and theres something wrong with my reports im going to sleep but gonna wake back up at 6 to work on it
     public static void allReports(ArrayList<Transaction> allReports) {
         for (Transaction r : allReports) ;
