@@ -69,41 +69,34 @@ public class MenuApp {
 
     }
 
-
+// write to file
     private static void writeToFile(Transaction transaction) {
         ArrayList<Transaction> result = new ArrayList<>();
         try {
-            FileWriter writer = new FileWriter("transactions.csv");
-            BufferedReader buffReader = new BufferedReader(writer);
-            String fullReader = buffReader.readLine();
-            String input;
-            buffReader.readLine();
-// here write single transaction and make sure it matches format of csv file
-            while ((fullReader = buffReader.readLine())!= null) {
-                String[] entry = fullReader.split("\\|");
-                String date = entry[0];
-                String time = entry[1];
-                String description = entry[2];
-                String vendor = entry[3];
-                double amount = Double.parseDouble(entry[4]);
-                Transaction transactions = new Transaction(LocalDate.parse(date, formatDate), LocalTime.parse(time, formatTime), description, vendor, amount);
-                result.add(transaction);
+            try {
+                FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
+                BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+                bufWriter.write(
+                        transaction.getDate() + "|" + transaction.getTime() + "|" +
+                                transaction.getDescription() + "|" + transaction.getVendor() + "|" +
+                                transaction.getAmount() + "\n");
+                bufWriter.close();
+            } catch (IOException e) {
+                System.out.println("File not found");
 
 
             }
 
 
-            String input;
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        //this logic can always be the same because the result will always be the same
-        //adding a new line to the csv file
     }
 
 
-    // you may need multiple methods to ready from the file..  mainly for the ledger menu
+
+    // read from file
     private static ArrayList<Transaction> readAllFromFile() {
 
         ArrayList<Transaction> result = new ArrayList<>();
@@ -235,7 +228,7 @@ public class MenuApp {
 
     }
 
-
+//ledger
     public static void showAllEntries() {
         System.out.println("All entries:");
         Ledger.allTransaction(transactions);
@@ -244,7 +237,7 @@ public class MenuApp {
 
     public static void showAllDeposits() {
         System.out.println("All deposits: ");
-      Ledger.allDeposits(transactions);
+        Ledger.allDeposits(transactions);
     }
 
     public static void showAllPayments() {
