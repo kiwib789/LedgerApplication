@@ -78,7 +78,7 @@ public class MenuApp {
                 BufferedWriter bufWriter = new BufferedWriter(fileWriter);
                 // splits up the format of the csv file in correct order
                 bufWriter.write(
-                        transaction.getDate() + "|" + transaction.getTime() + "|" +
+                        Transaction.getDate() + "|" + transaction.getTime() + "|" +
                                 transaction.getDescription() + "|" + transaction.getVendor() + "|" +
                                 transaction.getAmount() + "\n");
                 bufWriter.close();
