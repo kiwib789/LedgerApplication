@@ -8,6 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.pluralsight.ledgerapplication.Ledger.*;
+
 
 public class MenuApp {
 
@@ -18,6 +20,7 @@ public class MenuApp {
         ArrayList<String> arrayList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+        // home screen
         boolean isRunning = true;
 
         while (isRunning) {
@@ -28,11 +31,8 @@ public class MenuApp {
                     Please choose one of the following:
                     
                     D. Add deposit
-                    
                     P. Make Payment
-                    
                     L. Ledger
-                    
                     X. Exit
                     """);
             String userInput = scanner.nextLine().toUpperCase();
@@ -70,11 +70,28 @@ public class MenuApp {
     }
 
 
-
     private static void writeToFile(Transaction transaction) {
+        ArrayList<Transaction> result = new ArrayList<>();
         try {
             FileWriter writer = new FileWriter("transactions.csv");
+            BufferedReader buffReader = new BufferedReader(writer);
+            String fullReader = buffReader.readLine();
+            String input;
+            buffReader.readLine();
 // here write single transaction and make sure it matches format of csv file
+            while ((fullReader = buffReader.readLine())!= null) {
+                String[] entry = fullReader.split("\\|");
+                String date = entry[0];
+                String time = entry[1];
+                String description = entry[2];
+                String vendor = entry[3];
+                double amount = Double.parseDouble(entry[4]);
+                Transaction transactions = new Transaction(LocalDate.parse(date, formatDate), LocalTime.parse(time, formatTime), description, vendor, amount);
+                result.add(transaction);
+
+
+            }
+
 
             String input;
         } catch (IOException e) {
@@ -84,8 +101,6 @@ public class MenuApp {
         //this logic can always be the same because the result will always be the same
         //adding a new line to the csv file
     }
-
-
 
 
     // you may need multiple methods to ready from the file..  mainly for the ledger menu
@@ -120,8 +135,6 @@ public class MenuApp {
     }
 
 
-
-
     public static void addDeposit() {
         // get amount
         System.out.println("How much you would like to deposit? ");
@@ -141,9 +154,8 @@ public class MenuApp {
         Transaction t = new Transaction(now.toLocalDate(), now.toLocalTime(), description, vendor, amount);
         transactions.add(t);
 
+
     }
-
-
 
 
     public static void makePayment() {
@@ -167,7 +179,6 @@ public class MenuApp {
     }
 
 
-
     public static void displayLedgerMenu() {
         Scanner scanner = new Scanner(System.in);
 
@@ -182,6 +193,7 @@ public class MenuApp {
                     
                     A. View all entries
                     D. View deposits
+                    P. View Payments
                     R. Reports
                     H. Exit to home screen
                     """);
@@ -224,26 +236,29 @@ public class MenuApp {
     }
 
 
-
-
     public static void showAllEntries() {
         System.out.println("All entries:");
         Ledger.allTransaction(transactions);
+
     }
 
     public static void showAllDeposits() {
         System.out.println("All deposits: ");
+      Ledger.allDeposits(transactions);
     }
 
     public static void showAllPayments() {
         System.out.println("All payments: ");
+        Ledger.allPayments(transactions);
     }
 
     public static void showAllReports() {
         System.out.println("All reports: ");
+        Ledger.allReports(transactions);
 
 
     }
+
 
     LocalDateTime dateTime = LocalDateTime.now();
     static DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -268,23 +283,86 @@ public class MenuApp {
 
     }
 
+
     public static void reportsDisplay() {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
 
         while (isRunning) {
             System.out.println("""
-                    Welcome to the Reports screen
+                    Welcome to the Reports screen!
                     
                     Please choose one of the following 
                     
                     1. Month
-                    
                     2. Previous Month
+                    3. Year to Date
+                    4. Previous Year
+                    5. Search by vendor
+                    0. Back
+                    
                     """);
+            String userInput = scanner.nextLine().toUpperCase();
 
+            switch (userInput) {
+                case "1":
+                    System.out.println("Month to Date ");
+                    //all
+                    monthToDate();
+                    break;
+                case "2":
+                    // deposits
+                    System.out.println("Previous month ");
+                    previousMonth();
+                    break;
+                case "3":
+                    // payments
+                    System.out.println("Year to Date ");
+                    yearToDate();
+                    break;
+                case "4":
+                    // reports
+                    System.out.println("Previous Year ");
+                    previousYear();
+                    break;
+                case "5":
+                    System.out.println("Search by vendor ");
+                    searchVendor();
+                case "0":
+                    System.out.println("Go back");
+                    isRunning = false;
+                    break;
+                // runs exit class
+                default:
+                    System.out.println("Invalid input, please choose correct input.");
+                    break;
+            }
         }
     }
+
+    public static void monthToDate() {
+        System.out.println("Month to Date");
+        Ledger.monthToDate(transactions);
+    }
+
+    public static void previousMonth() {
+        System.out.println("Previous month");
+        Ledger.previousMonth(transactions);
+    }
+
+    public static void yearToDate() {
+        System.out.println("Year to Date ");
+        Ledger.yearToDate(transactions);
+    }
+
+    public static void previousYear() {
+        System.out.println("Previous year ");
+        Ledger.previousYear(transactions);
+
+
+    }
+    private static void searchVendor() {
+        System.out.println("Please enter vendor");
+        Ledger.searchVendor(transactions);
+    }
 }
-
-
