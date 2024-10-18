@@ -1,10 +1,11 @@
 package com.pluralsight.ledgerapplication;
 
-import javax.sql.rowset.spi.TransactionalWriter;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 
 
@@ -55,15 +56,16 @@ public class Ledger {
 
         }
     }
+
     // filters to display the transactions from the previous month
     public static void previousMonth(ArrayList<Transaction> previousMonth) {
-        for (Transaction pm : transactions)
+        for (Transaction pm : transactions) {
             if ((Transaction.getDate().getMonth() - 1) == LocalDate.now().getMonth()) {
                 System.out.println("Previous month:" + transactions);
 
             }
 
-
+        }
     }
 
     public static void yearToDate(ArrayList<Transaction> yearToDate) {
@@ -71,6 +73,7 @@ public class Ledger {
         if (Transaction.date.getYear() == LocalDate.now().getYear()) ;
         System.out.println("Year to Date: " + yearToDate);
     }
+
 
     // filters to display the transactions from the previous year
     public static void previousYear(ArrayList<Transaction> previousYear) {
@@ -82,15 +85,12 @@ public class Ledger {
 
     public static void searchVendor(ArrayList<Transaction> searchVendor) {
         for (Transaction sv : searchVendor) {
-            if (Transaction.vendor.getVendor().equalsIgnoreCase(searchVendor)) ;
-            System.out.println("Please enter name of vendor" + searchVendor);
-        }
-        {
+            if (Transaction.vendor.getVendor().equalsIgnoreCase(searchVendor)) {
+                System.out.println("Please enter name of vendor" + searchVendor);
+            }
 
 
         }
-
-
     }
 }
 
