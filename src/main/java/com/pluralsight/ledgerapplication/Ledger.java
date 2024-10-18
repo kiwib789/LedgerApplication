@@ -65,14 +65,18 @@ public class Ledger {
 
 
         public static void searchVendor (ArrayList < Transaction > searchVendor) {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Which vendor are you looking for? (enter x to exit)");
-            String vendor = scan.nextLine();
+            for (Transaction sv : searchVendor) {
+                if (sv.getVendor().equals(searchVendor)) {
+                    result.add(sv);
+                }
+            }
+            return result;
 
 
                 }
 
 
             }
+
         }
 
