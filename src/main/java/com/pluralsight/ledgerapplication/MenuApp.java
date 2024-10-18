@@ -185,7 +185,7 @@ public class MenuApp {
                     """);
             String userInput = scanner.nextLine().toUpperCase();
 
-            // Works wit user input based on which answer they pick and takes them to the next screen
+            // Works with user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "A":
                     System.out.println("View all entries ");
