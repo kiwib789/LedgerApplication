@@ -1,6 +1,8 @@
 package com.pluralsight.ledgerapplication;
 
+import javax.sql.rowset.spi.TransactionalWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,7 +22,7 @@ public class Ledger {
 
     // reads from csv file and displays all the deposits
     public static void allDeposits(ArrayList<Transaction> allDeposits) {
-        for (Transaction d : transactions) {
+        for (Transaction d : allDeposits) {
             if (d.getAmount() > 0) {
                 System.out.println(d);
 
@@ -31,14 +33,13 @@ public class Ledger {
 
     // // reads from csv file and displays all the payments
     public static void allPayments(ArrayList<Transaction> allPayment) {
-        for (Transaction p : transactions) ;
+        for (Transaction p : allPayment) ;
         if (p.getAmount() < 0) {
             System.out.println(p);
         }
     }
 
-    // hey paul if you see this i fixed a good amount of my errors i was missing a curly brace, took me two hours to realize it ~_~
-// i couldnt fix the error above and theres something wrong with my reports im going to sleep but gonna wake back up at 6 to work on it
+
     public static void allReports(ArrayList<Transaction> allReports) {
         for (Transaction r : allReports) ;
         System.out.println();
@@ -46,43 +47,49 @@ public class Ledger {
 
 
     // reports
-
     public static void monthToDate(ArrayList<Transaction> monthToDate) {
         for (Transaction mtd : transactions) ;
-        if (transactions.getDate().getMonth() == LocalDate.now().getMonth() && transactions.getDate().getYear() == LocalDate.now().getYear()) {
-            System.out.print(transactions);
+        if (Transaction.getDate().getMonth() == (LocalDate.now().getMonth())) {
+            System.out.print("Month to date:" + transactions);
 
         }
     }
 
-        public static void previousMonth(ArrayList<Transaction>previousMonth) {
-            for (Transaction pm : transactions)
-                ;
-        }
+    public static void previousMonth(ArrayList<Transaction> previousMonth) {
+        for (Transaction pm : transactions)
+            if (Transaction.getDate().getMonth() - 1 == LocalDate.now().getMonth()) {
+                System.out.println("Previous month:" + transactions);
+
+            }
 
 
     }
 
-    public static void yearToDate(ArrayList<Transaction>yearToDate) {
+    public static void yearToDate(ArrayList<Transaction> yearToDate) {
         for (Transaction ytd : yearToDate) ;
-        if ((LocalDate.now().getYear() - 1) == Transaction.getDate().getYear()) ;
+        if (Transaction.date.getYear() == LocalDate.now().getYear()) ;
+        System.out.println("Year to Date: " + yearToDate);
     }
 
 
     public static void previousYear(ArrayList<Transaction> previousYear) {
         for (Transaction py : previousYear) ;
+        if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
+        System.out.println("Previous year: " + previousYear);
     }
 
 
     public static void searchVendor(ArrayList<Transaction> searchVendor) {
         for (Transaction sv : searchVendor) {
-            {
-
-
-            }
+            if (Transaction.vendor.getVendor().equalsIgnoreCase(searchVendor)) ;
+            System.out.println("Please enter name of vendor" + searchVendor);
+        }
+        {
 
 
         }
 
 
     }
+}
+

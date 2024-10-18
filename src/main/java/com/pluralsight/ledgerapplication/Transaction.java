@@ -2,15 +2,16 @@ package com.pluralsight.ledgerapplication;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
-public class Transaction {
+public class Transaction extends ArrayList<Transaction> {
 
     //fields aka variables - they hold the data for the class
 
     LocalTime time;
-    LocalDate date;
+    static LocalDate date;
     double amount;
-    String vendor;
+    static String vendor;
     String description;
 
 
@@ -34,7 +35,7 @@ public class Transaction {
         this.time = time;
     }
 
-    public LocalDate getDate() {
+    public static LocalDate getDate() {
         return date;
     }
 

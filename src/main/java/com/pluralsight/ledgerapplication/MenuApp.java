@@ -69,7 +69,7 @@ public class MenuApp {
 
     }
 
-// writes to file
+    // writes to file
     private static void writeToFile(Transaction transaction) {
         ArrayList<Transaction> result = new ArrayList<>();
         try {
@@ -89,7 +89,6 @@ public class MenuApp {
             throw new RuntimeException(e);
         }
     }
-
 
 
     // read from file
@@ -222,6 +221,7 @@ public class MenuApp {
 
     }
 
+
     //ledger
     public static void showAllEntries() {
         System.out.println("All entries:");
@@ -269,6 +269,7 @@ public class MenuApp {
         }
 
     }
+
 
     // reports screen
     public static void reportsDisplay() {
