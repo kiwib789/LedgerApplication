@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Ledger {
 
+
+public class Ledger {
+    private static ArrayList<Transaction> transactions;
 
     public static void allTransaction(ArrayList<Transaction> allTransactions) {
         for (Transaction t : allTransactions) {
@@ -16,7 +18,7 @@ public class Ledger {
 
 
     public static void allDeposits(ArrayList<Transaction> allDeposits) {
-        for (Transaction d : allDeposits) {
+        for (Transaction d : transactions) {
             if (d.getAmount() > 0) {
                 System.out.println(d);
 
@@ -25,7 +27,7 @@ public class Ledger {
     }
 
     public static void allPayments(ArrayList<Transaction> allPayments) {
-        for (Transaction p : allPayments) ;
+        for (Transaction p : transactions) ;
                 if (p.getAmount() < 0) {
             System.out.println(p);
         }
@@ -40,15 +42,17 @@ public class Ledger {
 
     // reports
     public static void monthToDate(ArrayList<Transaction> monthToDate) {
-        for (Transaction mtd : Ledger) ;
-        if (mtd.getDate().getMonth().equals(LocalDate.now().getMonth())) {
-            System.out.println(mtd.toStringForConsole());
+        for (Transaction mtd : transactions) ;
+        if (transactions.getDate().getMonth() == LocalDate.now().getMonth() && transactions.getDate().getYear() == LocalDate.now().getYear()) {
+            System.out.print(transactions);
 
 
         }
 
-        public static void previousMonth (ArrayList < Transaction > previousMonth) {
-            for (Transaction pm : previousMonth) ;
+        public static void previousMonth (ArrayList<Transaction>previousMonth) {
+            for (Transaction pm : transactions)
+                ;
+            }
 
 
         }
@@ -78,5 +82,5 @@ public class Ledger {
 
             }
 
-        }
+
 

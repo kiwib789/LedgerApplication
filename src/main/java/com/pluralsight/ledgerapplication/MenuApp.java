@@ -37,7 +37,7 @@ public class MenuApp {
                     """);
             String userInput = scanner.nextLine().toUpperCase();
 
-
+            // Works wit user input based on which answer they pick and takes them to the next screen
             switch (userInput) {
                 case "D":
                     System.out.println("Please enter deposit. ");
@@ -69,14 +69,14 @@ public class MenuApp {
 
     }
 
-// write to file
+// writes to file
     private static void writeToFile(Transaction transaction) {
         ArrayList<Transaction> result = new ArrayList<>();
         try {
             try {
                 FileWriter fileWriter = new FileWriter("src/main/resources/transactions.csv", true);
                 BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-
+                // splits up the format of the csv file in correct order
                 bufWriter.write(
                         transaction.getDate() + "|" + transaction.getTime() + "|" +
                                 transaction.getDescription() + "|" + transaction.getVendor() + "|" +
@@ -84,11 +84,7 @@ public class MenuApp {
                 bufWriter.close();
             } catch (IOException e) {
                 System.out.println("File not found");
-
-
             }
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -107,7 +103,7 @@ public class MenuApp {
 
             String input;
             bufReader.readLine();
-            // skip the first line
+            // splits up user input by correct format
             while ((input = bufReader.readLine()) != null) {
                 String[] entry = input.split("\\|");
                 String date = entry[0];
