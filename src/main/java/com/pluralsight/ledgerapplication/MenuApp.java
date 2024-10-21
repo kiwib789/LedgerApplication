@@ -104,7 +104,7 @@ public class MenuApp {
             bufReader.readLine();
             // splits up user input by correct format
             while ((input = bufReader.readLine()) != null) {
-                String[] entry = input.split("\\|");
+                String[] entry = input.split(" \\| ");
                 String date = entry[0];
                 String time = entry[1];
                 String description = entry[2];

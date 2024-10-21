@@ -77,7 +77,7 @@ public class Ledger {
     // filters to display the transactions from the previous year
     public static void previousYear(ArrayList<Transaction> previousYear) {
         for (Transaction py : previousYear) ;
-        if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
+            if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
         System.out.println("Previous year: " + previousYear);
     }
 
