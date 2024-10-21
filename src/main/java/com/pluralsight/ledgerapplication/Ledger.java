@@ -2,12 +2,9 @@ package com.pluralsight.ledgerapplication;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
-
-
-
+import java.util.Scanner;
 
 
 public class Ledger {
@@ -51,50 +48,50 @@ public class Ledger {
 
     // methods for reports
     public static void monthToDate(ArrayList<Transaction> monthToDate) {
-        LocalDate today = LocalDate.now();
-        LocalDate firstDayofmonth = today.withDayOfMonth(1);
+        for (Transaction mtd : monthToDate) {
+            if (Transaction.date.getMonth() == LocalDate.now().getMonth()) ;
+            System.out.println(monthToDate);
 
-        for (Transaction transaction : transactions) {
-            if (!transaction.getDate().isBefore(firstDayofmonth) && !transaction.getDate().isAfter(today)) {
-                System.out.println(transaction);
-
-            }
         }
     }
-        // filters to display the transactions from the previous month
-        public static void previousMonth(ArrayList< Transaction > previousMonth) {
-            for (Transaction pm : previousMonth) {
-                if ((Transaction.date.getDate() - 1) == LocalDate.now().getMonth()) {
-                    System.out.println("Previous month:" + transactions);
 
-                }
-
-            }
-        }
-
-        public static void yearToDate (ArrayList < Transaction > yearToDate) {
-            for (Transaction ytd : yearToDate) ;
-            if (Transaction.date.getYear() == LocalDate.now().getYear()) ;
-            System.out.println("Year to Date: " + yearToDate);
-        }
-
-
-        // filters to display the transactions from the previous year
-        public static void previousYear (ArrayList < Transaction > previousYear) {
-            for (Transaction py : previousYear) ;
-            if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
-            System.out.println("Previous year: " + previousYear);
-        }
-
-
-        public static void searchVendor (ArrayList < Transaction > searchVendor) {
-            for (Transaction sv : searchVendor) {
-                if (Transaction.vendor.getVendor().equalsIgnoreCase(searchVendor)) {
-                    System.out.println("Please enter name of vendor " + searchVendor);
-                }
-
+    // filters to display the transactions from the previous month
+    public static void previousMonth(ArrayList<Transaction> previousMonth) {
+        for (Transaction pm : previousMonth) {
+            if ((Transaction.date.getMonth()-1) == LocalDate.now().getMonth()) {
+                System.out.println("Previous month:" + transactions);
 
             }
+
         }
-        }
+    }
+
+
+    public static void yearToDate(ArrayList<Transaction> yearToDate) {
+        for (Transaction ytd : yearToDate) ;
+        if (Transaction.date.getYear() == LocalDate.now().getYear()) ;
+        System.out.println(yearToDate);
+    }
+
+
+    // filters to display the transactions from the previous year
+    public static void previousYear(ArrayList<Transaction> previousYear) {
+        for (Transaction py : previousYear) ;
+        if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
+        System.out.println("Previous year: " + previousYear);
+    }
+
+
+    public static void searchVendor(ArrayList<Transaction> searchVendor) {
+        Scanner searchVendorScanner = new Scanner(System.in);
+
+        System.out.println("Enter the name of the vendor ");
+        String search = searchVendorScanner.nextLine().trim().toLowerCase();
+
+
+    }
+}
+
+
+
 
