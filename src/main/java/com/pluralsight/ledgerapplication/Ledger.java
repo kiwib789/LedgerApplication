@@ -41,15 +41,18 @@ public class Ledger {
 
     // // reads from csv file and displays all the reports
     public static void allReports(ArrayList<Transaction> allReports) {
-        for (Transaction r : allReports) ;
-        System.out.println();
+        System.out.println("All Reports");
+        for (Transaction r : allReports) {
+            System.out.println(r.toString());
+        }
     }
 
 
     // methods for reports
     public static void monthToDate(ArrayList<Transaction> monthToDate) {
+        System.out.println("Month to date:");
         for (Transaction mtd : monthToDate) {
-            if (Transaction.date.getMonth() == LocalDate.now().getMonth()) ;
+            if (mtd.getDate().getMonth() == LocalDate.now().getMonth()) ;
             System.out.println(monthToDate);
 
         }
@@ -57,9 +60,11 @@ public class Ledger {
 
     // filters to display the transactions from the previous month
     public static void previousMonth(ArrayList<Transaction> previousMonth) {
+        System.out.println("Previous month:");
+        System.out.println();
         for (Transaction pm : previousMonth) {
-            if ((Transaction.date.getMonth()-1) == LocalDate.now().getMonth()) {
-                System.out.println("Previous month:" + transactions);
+            if ((pm.getDate().getMonth().getValue() - 1) == LocalDate.now().getMonth().getValue() - 1) {
+                System.out.println(pm);
 
             }
 
@@ -68,17 +73,25 @@ public class Ledger {
 
 
     public static void yearToDate(ArrayList<Transaction> yearToDate) {
-        for (Transaction ytd : yearToDate) ;
-        if (Transaction.date.getYear() == LocalDate.now().getYear()) ;
-        System.out.println(yearToDate);
+        System.out.println("Year to date:");
+        for (Transaction ytd : yearToDate) {
+            if (ytd.getDate().getYear() == LocalDate.now().getYear()) {
+            System.out.println(ytd);
+        }
+
     }
+}
+
 
 
     // filters to display the transactions from the previous year
     public static void previousYear(ArrayList<Transaction> previousYear) {
-        for (Transaction py : previousYear) ;
-            if ((Transaction.date.getYear() - 1) == LocalDate.now().getYear()) ;
-        System.out.println("Previous year: " + previousYear);
+        for (Transaction py : previousYear) {
+            if (py.getDate().getYear()-1 == LocalDate.now().getYear()-1) {
+     //   System.out.println("Previous year: " + previousYear);
+                System.out.println(py);
+    }
+        }
     }
 
 

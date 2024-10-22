@@ -4,19 +4,23 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Transaction extends ArrayList<Transaction> {
+public class Transaction {
 
     //fields aka variables - they hold the data for the class
 
-    LocalTime time;
-    static LocalDate date;
-    double amount;
-    static String vendor;
-    String description;
+    private LocalTime time;
+    private LocalDate date;
+    private double amount;
+    private String vendor;
+    private String description;
 
 
     //constructors - allow us to create instances of our class
     //when we create an instance of the class then we've created an object
+
+    public Transaction(){
+
+    }
 
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.time = time;
@@ -32,7 +36,7 @@ public class Transaction extends ArrayList<Transaction> {
     }
 
 
-    public static LocalDate getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

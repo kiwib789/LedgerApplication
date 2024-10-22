@@ -17,7 +17,7 @@ public class MenuApp {
 
     public static void main(String[] args) throws IOException {
         transactions = readAllFromFile();
-        ArrayList<String> arrayList = new ArrayList<>();
+     //   ArrayList<String> arrayList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
         // home screen
@@ -78,7 +78,7 @@ public class MenuApp {
                 BufferedWriter bufWriter = new BufferedWriter(fileWriter);
                 // splits up the format of the csv file in correct order
                 bufWriter.write(
-                        Transaction.getDate() + "|" + transaction.getTime() + "|" +
+                        transaction.getDate() + "|" + transaction.getTime() + "|" +
                                 transaction.getDescription() + "|" + transaction.getVendor() + "|" +
                                 transaction.getAmount() + "\n");
                 bufWriter.close();
@@ -100,11 +100,12 @@ public class MenuApp {
             FileReader filereader = new FileReader("transactions.csv");
             BufferedReader bufReader = new BufferedReader(filereader);
 
-            String input;
-            bufReader.readLine();
+            String input = "";
             // splits up user input by correct format
             while ((input = bufReader.readLine()) != null) {
-                String[] entry = input.split(" \\| ");
+
+                String[] entry = input.split("\\|");
+
                 String date = entry[0];
                 String time = entry[1];
                 String description = entry[2];
@@ -112,6 +113,7 @@ public class MenuApp {
                 double amount = Double.parseDouble(entry[4]);
                 Transaction transaction = new Transaction(LocalDate.parse(date, formatDate), LocalTime.parse(time, formatTime), description, vendor, amount);
                 result.add(transaction);
+
             }
 
             bufReader.close();
