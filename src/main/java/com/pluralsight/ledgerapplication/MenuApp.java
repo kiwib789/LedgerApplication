@@ -243,7 +243,7 @@ public class MenuApp {
 
     public static void showAllReports() {
         System.out.println("All reports: ");
-        Ledger.allReports(transactions);
+        reportsDisplay();
 
 
     }
